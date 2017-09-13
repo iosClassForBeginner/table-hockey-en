@@ -11,100 +11,86 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var entities = [GKEntity]()
-    var graphs = [String : GKGraph]()
+    // Define SpriteNodes
+    var puck = SKSpriteNode()
+    var playerBottom = SKSpriteNode()
+    var playerTop = SKSpriteNode()
     
-    private var lastUpdateTime : TimeInterval = 0
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    // Define Labels
+    var topLable = SKLabelNode()
+    var bottomLable = SKLabelNode()
+    
+    var score = [Int]()
     
     override func sceneDidLoad() {
+        
+        score = [0,0]
+        
+        // Link up SpriteNodes
+        puck = self.childNode(withName: "puck") as! SKSpriteNode
+        playerBottom = self.childNode(withName: "playerBottom") as! SKSpriteNode
+        playerTop = self.childNode(withName: "playerTop") as! SKSpriteNode
+        
+        // Link up Labels
+        topLable = self.childNode(withName: "topLable") as! SKLabelNode
+        bottomLable = self.childNode(withName: "bottomLable") as! SKLabelNode
+        
+        // Add directions to the puck as an impulse in movement
+        puck.physicsBody?.applyImpulse(CGVector(dx: -20, dy: -20))
+        
+        // Define the game bounderies
+        let border = SKPhysicsBody(edgeLoopFrom: self.frame)
+        border.friction = 0
+        border.restitution = 1
+        
+        // Apply the boundaries
+        self.physicsBody = border
+    }
 
-        self.lastUpdateTime = 0
+    func addScore(playerWhoWon: SKSpriteNode) {
         
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
+        // Reset the puck position and zero its velocity
+        puck.position = CGPoint(x: 0, y: 0)
+        puck.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        
+        // Add the score for the right player and push the ball in opponents direction
+        if playerWhoWon == playerBottom {
+            score[0] += 1
+            puck.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
+        } else if playerWhoWon == playerTop {
+            score[1] += 1
+            puck.physicsBody?.applyImpulse(CGVector(dx: -20, dy: -20))
         }
         
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
-    }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
+        // Display the score
+        topLable.text = "\(score[1])"
+        bottomLable.text = "\(score[0])"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+        for touch in touches {
+            let location = touch.location(in: self)
+            playerBottom.run(SKAction.moveTo(x: location.x, duration: 0.2))
         }
-        
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        for touch in touches {
+            let location = touch.location(in: self)
+            playerBottom.run(SKAction.moveTo(x: location.x, duration: 0.2))
+        }
     }
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
         
-        // Initialize _lastUpdateTime if it has not already been
-        if (self.lastUpdateTime == 0) {
-            self.lastUpdateTime = currentTime
+        playerTop.run(SKAction.moveTo(x: puck.position.x, duration: 0.2))
+        
+        if puck.position.y <= playerBottom.position.y - 70 {
+            addScore(playerWhoWon: playerTop)
         }
-        
-        // Calculate time since last update
-        let dt = currentTime - self.lastUpdateTime
-        
-        // Update entities
-        for entity in self.entities {
-            entity.update(deltaTime: dt)
+        else if puck.position.y >= playerTop.position.y + 70 {
+            addScore(playerWhoWon: playerBottom)
         }
-        
-        self.lastUpdateTime = currentTime
     }
 }
