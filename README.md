@@ -29,12 +29,20 @@ http://ios-class-for-beginner.esy.es/
 > 0-3. Select <sup>Game</sup> and then tap <sup>Next</sup>  
 > 0-4. Fill <sup>Product name</sup>, select <sup>SpriteKit</sup> then click <sup>Next</sup>  
 > 0-5. Select the place for saving your project and then tap <sup>Create</sup>  
+> <details>
+>   <summary>View Gif</summary>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
+> </details>
 
 ## 1, Design your app
 #### 🗂 Main.storyboard
 
 > 2-1. Remove <code>helloLabel</code> from <code>GameScene.sks</code> file.
-> 2-2. Drag and drop a <code>Color Sprite</code> to your Scene.
+> <details>
+>   <summary>View Gif</summary>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
+> </details>
+> 2-2. Drag and drop a <code>Color Sprite</code> to your Scene. Set its Fix its code>Name</code> to "puck". position to (0 , 0) and its width and height to 30.
 > <details>
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
