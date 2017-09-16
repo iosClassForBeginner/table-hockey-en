@@ -37,12 +37,12 @@ http://ios-class-for-beginner.esy.es/
 ## 1, Design your app
 #### 🗂 Main.storyboard
 
-> 2-1. Remove <code>helloLabel</code> from <code>GameScene.sks</code> file.
+> 1-1. Remove <code>helloLabel</code> from <code>GameScene.sks</code> file.
 > <details>
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
 > </details>
-> 2-2. Set up the puck.
+> 1-2. Set up the puck.
 > <ul>
 >   <li>Drag and drop a <code>Color Sprite</code> to your Scene.</li>
 >   <li>Set its <code>Name</code> to "puck".</li>
@@ -52,17 +52,17 @@ http://ios-class-for-beginner.esy.es/
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
 > </details>
-> 2-3. Add the <code>2x</code> puck and player images to your assets and 
+> 1-3. Add the <code>2x</code> puck and player images to your assets and 
 > <details>
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid2.gif?raw=true" /> >     </div>
 > </details>
-> 2-4. Set pucks <code>Texture</code> to "puck-2x" and lower the opacity for the Scene color for better appearance.
+> 1-4. Set pucks <code>Texture</code> to "puck-2x" and lower the opacity for the Scene color for better appearance.
 > <details>
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid5.gif?raw=true" /> >     </div>
 > </details>
-> 2-5. Change the <code>Body Type</code> to "Bounding circle".
+> 1-5. Change the <code>Body Type</code> to "Bounding circle".
 > <ul>
 >   <li>Uncheck "Allows rotation"</li>
 >   <li>Uncheck "Affected By Gravity"</li>
@@ -79,6 +79,13 @@ http://ios-class-for-beginner.esy.es/
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid5.gif?raw=true" /> >     </div>
 > </details>
+> 1-6. Make a bottomPlayer and a topPlayer similar to the puck. Use the video as an example.
+> <details>
+>   <summary>View Gif</summary>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid5.gif?raw=true" /> >     </div>
+> </details>
+> 1-7. Create 2 nettings with height of 1, Collision Mask of 2 and contact mask of 2 and set category masks to 3, and 4 (for score counting). Place them where you want to count scores.
+
 
 ## 2, Connect UI components to the ViewController
 #### 🗂 Main.storyboard → ViewController.swift  
