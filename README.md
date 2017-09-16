@@ -35,7 +35,7 @@ http://ios-class-for-beginner.esy.es/
 > </details>
 
 ## 1, Design your app
-#### 🗂 Main.storyboard
+#### 🗂 Set up your Scene.
 
 > 1-1. Remove <code>helloLabel</code> from <code>GameScene.sks</code> file.
 > <details>
@@ -108,84 +108,119 @@ http://ios-class-for-beginner.esy.es/
 > </details>
 
 
-## 4, Add code blocks in ViewController.swift
-#### 🗂 ViewController.swift  
+## 2, Add code blocks in GameScene.swift
+#### 🗂 GameScene.swift  
 > ★ It's preferable to write following code yourself. It will help you to understand code more.
 
 ```Swift  
-import UIKit
-import MapKit           // Import MapKit to use your MKMapViw
-import CoreLocation     // Import CoreLocation to access GPS
+import SpriteKit
+import GameplayKit
 
-class ViewController: UIViewController {
+class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    // Define SpriteNodes
+    var puck = SKSpriteNode()
+    var playerBottom = SKSpriteNode()
+    var playerTop = SKSpriteNode()
+    var bottomNet = SKSpriteNode()
+    var topNet = SKSpriteNode()
+    
+    // Define Labels
+    var topLable = SKLabelNode()
+    var bottomLable = SKLabelNode()
+    var pucksPhysics = SKPhysicsBody()
+    
+    var score = [Int]()
+    
+    override func sceneDidLoad() {
+        
+        score = [0,0]
+        
+        // Link up SpriteNodes
+        puck = self.childNode(withName: "puck") as! SKSpriteNode
+        playerBottom = self.childNode(withName: "playerBottom") as! SKSpriteNode
+        playerTop = self.childNode(withName: "playerTop") as! SKSpriteNode
+        bottomNet = self.childNode(withName: "bottomNet") as! SKSpriteNode
+        topNet = self.childNode(withName: "topNet") as! SKSpriteNode
+        
+        // Link up Labels
+        topLable = self.childNode(withName: "topLable") as! SKLabelNode
+        bottomLable = self.childNode(withName: "bottomLable") as! SKLabelNode
+        
+        // Add directions to the puck as an impulse in movement
+        pucksPhysics = puck.physicsBody!
+        puck.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -20))
+        
+        // Define the game bounderies
+        let border = SKPhysicsBody(edgeLoopFrom: self.frame)
+        border.friction = 0
+        border.restitution = 1
+        
+        // Apply the boundaries
+        self.physicsBody = border
+        self.physicsWorld.contactDelegate = self
+    }
 
-    @IBOutlet weak var map: MKMapView!
-    
-    let locationManager = CLLocationManager()
-    var isCentered = false
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func addScore(playerWhoWon: SKSpriteNode) {
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()             // Required in order to access GPS coordinates
+        // Reset the puck position and zero its velocity
+        puck.physicsBody = nil
+        puck.position = CGPoint(x: 0, y: 0)
+        puck.physicsBody = pucksPhysics
         
-    }
-    
-    func centerMapOnLocation(coordinate: CLLocationCoordinate2D) {
-    
-        let latDelta:CLLocationDegrees = 0.01
-        let lonDelta:CLLocationDegrees = 0.01
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(coordinate, span)
-        self.map.setRegion(region, animated: true)
         
-    }
-    
-    @IBAction func mapTypeChanged(sender: UISegmentedControl) {
-    
-        switch (sender.selectedSegmentIndex) {
-        case 0:
-            map.mapType = MKMapType.standard
-        case 1:
-            map.mapType = MKMapType.hybrid
-        case 2:
-            map.mapType = MKMapType.satellite
-        default: break
+        // Add the score for the right player and push the ball in opponents direction
+        if playerWhoWon == playerBottom {
+            score[0] += 1
+            puck.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 20))
+        } else if playerWhoWon == playerTop {
+            score[1] += 1
+            puck.physicsBody?.applyImpulse(CGVector(dx: 0, dy: -20))
         }
+
+        // Display the score
+        topLable.text = "\(score[1])"
+        bottomLable.text = "\(score[0])"
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            playerBottom.run(SKAction.moveTo(x: location.x, duration: 0.2))
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            playerBottom.run(SKAction.moveTo(x: location.x, duration: 0.2))
+        }
+    }
+    
+    
+    override func update(_ currentTime: TimeInterval) {
+        
+        playerTop.run(SKAction.moveTo(x: puck.position.x, duration: 1))
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        let firstBody = contact.bodyA
+        let secondBody = contact.bodyB
+        
+        if(firstBody.categoryBitMask == 2 && secondBody.categoryBitMask == 3 ||
+            firstBody.categoryBitMask == 3 && secondBody.categoryBitMask == 2)
+        {
+            addScore(playerWhoWon: playerTop)
+           
+        } else if(firstBody.categoryBitMask == 2 && secondBody.categoryBitMask == 4 ||
+            firstBody.categoryBitMask == 4 && secondBody.categoryBitMask == 2)
+        {
+            addScore(playerWhoWon: playerBottom)
+        }
     }
+    
 }
 
-
-
-extension ViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        if !isCentered {
-            self.centerMapOnLocation(coordinate: locations.first!.coordinate)
-            isCentered = true
-        }
-        
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            locationManager.startUpdatingLocation()
-            map.showsUserLocation = true
-        default: 
-            locationManager.stopUpdatingLocation()
-            map.showsUserLocation = false
-        }
-    }
-}
 ```
