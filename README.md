@@ -37,8 +37,7 @@ http://ios-class-for-beginner.esy.es/
 > 2-2. Drag and drop a <code>Color Sprite</code> to your Scene.
 > <details>
 >   <summary>View Gif</summary>
->   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    
-    </div>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
 > </details>
 
 > 2-2. Add a <code>UISegmentControl</code> to your View Controller
