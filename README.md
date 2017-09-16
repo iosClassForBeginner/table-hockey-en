@@ -42,6 +42,7 @@ http://ios-class-for-beginner.esy.es/
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid2.gif?raw=true" />    </div>
 > </details>
+> <br>
 > 1-2. Set up the puck.
 > <ul>
 >   <li>Drag and drop a <code>Color Sprite</code> to your Scene.</li>
@@ -52,6 +53,7 @@ http://ios-class-for-beginner.esy.es/
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid3.gif?raw=true" />    </div>
 > </details>
+> <br>
 > 1-3. Add the <code>2x</code> puck and player images to your assets and 
 > <details>
 >   <summary>View Gif</summary>
