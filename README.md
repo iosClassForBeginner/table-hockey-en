@@ -59,11 +59,13 @@ http://ios-class-for-beginner.esy.es/
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid4.gif?raw=true" /> >     </div>
 > </details>
+> <br>
 > 1-4. Set pucks <code>Texture</code> to "puck-2x" and lower the opacity for the Scene color for better appearance.
 > <details>
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid5.gif?raw=true" /> >     </div>
 > </details>
+> <br>
 > 1-5. Change the <code>Body Type</code> to "Bounding circle".
 > <ul>
 >   <li>Uncheck "Allows rotation"</li>
@@ -81,13 +83,15 @@ http://ios-class-for-beginner.esy.es/
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid6.gif?raw=true" /> >     </div>
 > </details>
+> <br>
 > 1-6. Make a bottomPlayer and a topPlayer similar to the puck. Use the video as an example.
 > <details>
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid7.gif?raw=true" /> >     </div>
 > </details>
+> <br>
 > 1-7. Create 2 nettings with height of 1, Collision Mask of 2 and contact mask of 2 and set category masks to 3, and 4 (for score counting). Place them where you want to count scores.
-
+> <br>
 
 ## 2, Add code blocks in GameScene.swift
 #### 🗂 GameScene.swift  
