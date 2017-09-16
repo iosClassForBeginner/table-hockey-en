@@ -31,7 +31,7 @@ http://ios-class-for-beginner.esy.es/
 > 0-5. Select the place for saving your project and then tap <sup>Create</sup>  
 > <details>
 >   <summary>View Gif</summary>
->   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid1.gif?raw=true" />    </div>
 > </details>
 
 ## 1, Design your app
@@ -40,7 +40,7 @@ http://ios-class-for-beginner.esy.es/
 > 1-1. Remove <code>helloLabel</code> from <code>GameScene.sks</code> file.
 > <details>
 >   <summary>View Gif</summary>
->   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid2.gif?raw=true" />    </div>
 > </details>
 > 1-2. Set up the puck.
 > <ul>
@@ -50,17 +50,17 @@ http://ios-class-for-beginner.esy.es/
 > </ul>
 > <details>
 >   <summary>View Gif</summary>
->   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid3.gif?raw=true" />    </div>
 > </details>
 > 1-3. Add the <code>2x</code> puck and player images to your assets and 
 > <details>
 >   <summary>View Gif</summary>
->   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid2.gif?raw=true" /> >     </div>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid4.gif?raw=true" /> >     </div>
 > </details>
 > 1-4. Set pucks <code>Texture</code> to "puck-2x" and lower the opacity for the Scene color for better appearance.
 > <details>
 >   <summary>View Gif</summary>
->   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid5.gif?raw=true" /> >     </div>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid5.gif?raw=true" /> >     </div>
 > </details>
 > 1-5. Change the <code>Body Type</code> to "Bounding circle".
 > <ul>
@@ -77,12 +77,12 @@ http://ios-class-for-beginner.esy.es/
 > </ul>
 > <details>
 >   <summary>View Gif</summary>
->   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid5.gif?raw=true" /> >     </div>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid6.gif?raw=true" /> >     </div>
 > </details>
 > 1-6. Make a bottomPlayer and a topPlayer similar to the puck. Use the video as an example.
 > <details>
 >   <summary>View Gif</summary>
->   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid5.gif?raw=true" /> >     </div>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/table-hockey-en/blob/master/videos/vid7.gif?raw=true" /> >     </div>
 > </details>
 > 1-7. Create 2 nettings with height of 1, Collision Mask of 2 and contact mask of 2 and set category masks to 3, and 4 (for score counting). Place them where you want to count scores.
 
