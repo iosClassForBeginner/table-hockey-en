@@ -87,27 +87,6 @@ http://ios-class-for-beginner.esy.es/
 > 1-7. Create 2 nettings with height of 1, Collision Mask of 2 and contact mask of 2 and set category masks to 3, and 4 (for score counting). Place them where you want to count scores.
 
 
-## 2, Connect UI components to the ViewController
-#### 🗂 Main.storyboard → ViewController.swift  
-  ★  control + drag in storyboard to create a control segue
-  
-> 3-1. Connect "MKMapView"
-> <details>
->   <summary>View Gif</summary>
->   <div style="text-align:center">
->     <img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid3.gif?raw=true" />
->   </div>
->  </details>
-
-> 3-2. Connect "UISegmentControl"
-> <details>
->   <summary>View Gif</summary>
->   <div style="text-align:center">
->     <img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid4.gif?raw=true" />
->   </div>
-> </details>
-
-
 ## 2, Add code blocks in GameScene.swift
 #### 🗂 GameScene.swift  
 > ★ It's preferable to write following code yourself. It will help you to understand code more.
