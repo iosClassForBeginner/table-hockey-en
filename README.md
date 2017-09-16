@@ -42,7 +42,7 @@ http://ios-class-for-beginner.esy.es/
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
 > </details>
-> 2-2. Drag and drop a <code>Color Sprite</code> to your Scene. Set its Fix its code>Name</code> to "puck". position to (0 , 0) and its width and height to 30.
+> 2-2. Drag and drop a <code>Color Sprite</code> to your Scene. Set its Fix its <code>Name</code> to "puck". position to (0 , 0) and its width and height to 30.
 > <details>
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
