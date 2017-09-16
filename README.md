@@ -48,28 +48,37 @@ http://ios-class-for-beginner.esy.es/
 >   <li>Set its <code>Name</code> to "puck".</li>
 >   <li>Fix its position to (0 , 0) and its width and height to 30.</li>
 > </ul>
-  
 > <details>
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    </div>
 > </details>
-
-> 2-2. Add a <code>UISegmentControl</code> to your View Controller
-> <ul>
->   <li>Increase the number of segments to 3</li>
->   <li>Rename each segment to Map, Hybrid, and Satellite respectively</li>
-> </ul>
+> 2-3. Add the <code>2x</code> puck and player images to your assets and 
 > <details>
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid2.gif?raw=true" /> >     </div>
 > </details>
-
-> 2-3. Apply autoresizing for map and segment control
+> 2-4. Set pucks <code>Texture</code> to "puck-2x" and lower the opacity for the Scene color for better appearance.
 > <details>
 >   <summary>View Gif</summary>
 >   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid5.gif?raw=true" /> >     </div>
 > </details>
-
+> 2-5. Change the <code>Body Type</code> to "Bounding circle".
+> <ul>
+>   <li>Uncheck "Allows rotation"</li>
+>   <li>Uncheck "Affected By Gravity"</li>
+>   <li>Set "Friction" to 0</li>
+>   <li>Set "Restitution" to 0</li>
+>   <li>Set "Lin. Damping" to 0</li>
+>   <li>Set "Ang. Damping" to 0</li>
+>   <li>Set "Category Mask" to 2</li>
+>   <li>Set "Collision Mask" to 1</li>
+>   <li>Set "Field Mask" to 0</li>
+>   <li>Set "Contact Mask" to 1</li>
+> </ul>
+> <details>
+>   <summary>View Gif</summary>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid5.gif?raw=true" /> >     </div>
+> </details>
 
 ## 2, Connect UI components to the ViewController
 #### 🗂 Main.storyboard → ViewController.swift  
