@@ -27,16 +27,18 @@ http://ios-class-for-beginner.esy.es/
 > 0-1. Open Xcode
 > 0-2. Select <sup>Create a new Xcode project</sup> or Go to <code>File</code> → <code>New</code> → <code>Project...</code>  
 > 0-3. Select <sup>Game</sup> and then tap <sup>Next</sup>  
-> 0-4. Fill <sup>Product name</sup> for <sup>Game Technology</sup> select <sup>SpriteKit</sup> then click <sup>Next</sup>  
+> 0-4. Fill <sup>Product name</sup>, select <sup>SpriteKit</sup> then click <sup>Next</sup>  
 > 0-5. Select the place for saving your project and then tap <sup>Create</sup>  
 
 ## 1, Design your app
 #### 🗂 Main.storyboard
 
-> 2-1. Add a <code>MKMapView</code> to your View Controller
+> 2-1. Remove <code>helloLabel</code> from <code>GameScene.sks</code> file.
+> 2-2. Drag and drop a <code>Color Sprite</code> to your Scene.
 > <details>
 >   <summary>View Gif</summary>
->   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?raw=true" /> >     </div>
+>   <div style="text-align:center"><img src ="https://github.com/iosClassForBeginner/mapApp/blob/master/vids/vid1.gif?      raw=true" />    
+    </div>
 > </details>
 
 > 2-2. Add a <code>UISegmentControl</code> to your View Controller
